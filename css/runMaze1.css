@@ -1,0 +1,58 @@
+body
+{
+	background-color:purple;
+	padding-left: 5%;
+    background-image: url(maze3.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
+    color: white;
+    font-size: 25px;
+    text-shadow: -2px -2px 1px #000, 
+                2px 2px 1px #000,
+                -2px 2px 1px #000,
+                2px -2px 1px #000;
+
+}
+
+.arriba{
+	background-image: url('little_Arrow.jpg');
+	background-repeat: no-repeat;
+}
+
+.abajo{
+	background-image: url('little_ArrowAbajo.jpg');
+	background-repeat: no-repeat;
+}
+.derecha{
+	background-image: url('little_ArrowDerecha.jpg');
+	background-repeat: no-repeat;
+}
+.izquierda{
+	background-image: url('little_ArrowIzquierda.jpg');
+	background-repeat: no-repeat;
+}
+
+.black
+{
+	background-color:black;
+}
+
+.blue
+{
+	background-color:blue !important;
+}
+.celdaBlue
+{
+	/*background-image: :url('little_Arrow.jpeg');	*/
+	background-color:blue;
+}
+
+.red
+{
+	background-color:red;
+}
+.white
+{
+	
+	background-color:white;
+}
