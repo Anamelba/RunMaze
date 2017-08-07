@@ -2,7 +2,7 @@ body
 {
 	background-color:purple;
 	padding-left: 5%;
-    background-image: url(img/maze3.jpg);
+    background-image: url(../img/maze3.jpg);
     background-repeat: repeat-y;
     background-size: cover;
     color: white;
@@ -15,16 +15,16 @@ body
 }
 
 .arriba{
-	background-image: url('img/little_Arrow.jpg');
+	background-image: url('../img/little_Arrow.jpg');
 	background-repeat: no-repeat;
 }
 
 .abajo{
-	background-image: url('img/little_ArrowAbajo.jpg');
+	background-image: url('../img/little_ArrowAbajo.jpg');
 	background-repeat: no-repeat;
 }
 .derecha{
-	background-image: url('img/little_ArrowDerecha.jpg');
+	background-image: url('../img/little_ArrowDerecha.jpg');
 	background-repeat: no-repeat;
 }
 .izquierda{

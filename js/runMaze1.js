@@ -9,10 +9,11 @@ var btn_abajo = document.getElementById('abajo');
 var btn_derecha = document.getElementById('derecha');
 var btn_izquierda = document.getElementById('izquierda');
 
-var x = 10;
+var x = 9;
 var y = 1;
 
 var id = x+'.'+y
+
 
 var mapa=[
 "******************",
@@ -63,8 +64,8 @@ for(var i=0; i<mapa.length; i++)
 table.appendChild(fila);
 }
 laberinto.appendChild(table);
-function limpiarflecha()
-{
+
+function limpiarflecha(){
 	var elemento = document.getElementById(x+'.'+y);
 	elemento.className=elemento.className.replace( /(?:^|\s)izquierda(?!\S)/g ,'' )
 	elemento.className=elemento.className.replace( /(?:^|\s)derecha(?!\S)/g ,'' )
@@ -88,6 +89,7 @@ var elemento = document.getElementById(x+'.'+y);
 elemento.className += ' abajo';
 
 }
+
 
 function derecha(){
 limpiarflecha()
@@ -145,8 +147,11 @@ function tecla (e)
 	break;
 	case 39: derecha();// alert('derecha')
 	break;
+
+
 	}
 }
+
 btn_abajo.onclick = function(){
 	abajo();
 }
