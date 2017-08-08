@@ -35,7 +35,7 @@ for(var i=0; i<mapa.length; i++)
 	{
 		var celda = document.createElement('td');
 		celda.setAttribute('contenteditable', 'true');
-		//celda.setAttribute('id','celdaBlue');
+		
 		fila.appendChild(celda);
 
 		if(mapa[i][j]=="*")
@@ -72,186 +72,103 @@ function limpiarflecha()
 	elemento.className=elemento.className.replace( /(?:^|\s)abajo(?!\S)/g ,'' )
 }
 
-function arriba(){
-	limpiarflecha();
-movimiento(x-1,y);
-
-var elemento = document.getElementById(x+'.'+y);
-elemento.className += ' arriba';
-}
-
-function abajo(){
-limpiarflecha()
-movimiento(x+1,y);
-
-var elemento = document.getElementById(x+'.'+y);
-elemento.className += ' abajo';
-
-}
-
-function derecha(){
-limpiarflecha()
-movimiento(x,y+1);
-var elemento = document.getElementById(x+'.'+y);
-elemento.className += ' derecha';
-
-}
-
-function izquierda(){
-limpiarflecha()
-movimiento(x,y-1);
-var elemento = document.getElementById(x+'.'+y);
-elemento.className += ' izquierda';
-}
-
-function movimiento(x_n,y_n){
-console.log(x+'.'+y)
-console.log(x_n+'.'+y_n)
-if(mapa[x_n][y_n]!='*'){
-
- if(document.getElementById(x+'.'+y)){
- 	var elemento = document.getElementById(x+'.'+y);
- 	if(x+'.'+y == 9+'.'+1){
- 		elemento.className = ' white';
- 	}
- 	elemento.className=elemento.className.replace( /(?:^|\s)blue(?!\S)/g ,'' )
-
- }
-
- x = x_n;
- y = y_n;
-
-console.log(x+'.'+y)
- var elemento = document.getElementById(x+'.'+y);
- elemento.className += ' blue';
-
-}
-}
-
-function tecla (e)
+function arriba()
 {
-    var evt = e ? e : event;
-    var key = window.Event ? evt.which : evt.keyCode;
-    //(alert (key);
+	limpiarflecha();
+	movimiento(x-1,y);
 
-    switch(key){
-	case 38: arriba();//alert('arriba')
-	break;
+	var elemento = document.getElementById(x+'.'+y);
+	elemento.className += ' arriba';
+}
 
-		case 37: izquierda();// alert('izkierda')
-	break;
+function abajo()
+{
+	limpiarflecha()
+	movimiento(x+1,y);
 
-		case 40: abajo(); //alert('abajo')
-	break;
-	case 39: derecha();// alert('derecha')
-	break;
+	var elemento = document.getElementById(x+'.'+y);
+	elemento.className += ' abajo';
+
+}
+
+function derecha()
+{
+	limpiarflecha()
+	movimiento(x,y+1);
+	var elemento = document.getElementById(x+'.'+y);
+	elemento.className += ' derecha';
+
+}
+
+function izquierda()
+{
+	limpiarflecha()
+	movimiento(x,y-1);
+	var elemento = document.getElementById(x+'.'+y);
+	elemento.className += ' izquierda';
+}
+
+function movimiento(x_n,y_n)
+{
+	console.log(x+'.'+y)
+	console.log(x_n+'.'+y_n)
+	
+	if(mapa[x_n][y_n]!='*')
+	{
+ 		if(document.getElementById(x+'.'+y))
+ 		{
+ 			var elemento = document.getElementById(x+'.'+y);
+ 			if(x+'.'+y == 9+'.'+1)
+ 			{
+ 				elemento.className = ' white';
+ 			}
+ 			elemento.className=elemento.className.replace( /(?:^|\s)blue(?!\S)/g ,'' )
+		}
+
+ 		x = x_n;
+ 		y = y_n;
+
+		console.log(x+'.'+y)
+ 		var elemento = document.getElementById(x+'.'+y);
+ 		elemento.className += ' blue';
 	}
 }
-btn_abajo.onclick = function(){
+
+function tecla (event)
+{
+    var evt = event;
+    var key = evt.which || evt.keyCode;
+    switch(key)
+    {
+		case 38: arriba();//alert('arriba')
+		break;
+
+		case 37: izquierda();// alert('izquierda')
+		break;
+
+		case 40: abajo(); //alert('abajo')
+		break;
+		
+		case 39: derecha();// alert('derecha')
+		break;
+	}
+}
+btn_abajo.onclick = function()
+{
 	abajo();
 }
 
-btn_arriba.onclick = function(){
+btn_arriba.onclick = function()
+{
 	arriba();
 }
 
-btn_izquierda.onclick = function(){
-izquierda()
+btn_izquierda.onclick = function()
+{
+	izquierda();
 }
 
-btn_derecha.onclick = function(){
-derecha()
+btn_derecha.onclick = function()
+{
+	derecha();
 }
-
-function adelante(){
-
-var elemento = document.getElementById(x+'.'+y);
-var clase = elemento.className;
-
-	if(clase == 'blue arriba'){
-		//al norte
-		arriba();
-	}
-
-	if(clase == 'blue abajo'){
-		//al sur
-	    abajo()
-	}
-
-	if(clase == 'blue derecha'){
-		//al este
-	derecha()
-	}
-
-	if(clase == 'blue izquierda'){
-		//al oeste
-	 izquierda();
-	}
-}
-
-
-
-function lado_izquierdo(){
-
-var elemento = document.getElementById(x+'.'+y);
-var clase = elemento.className;
-//var orientacion = document.getElementByClass('arriba');
-
-if(clase == 'blue arriba'){
-	//al norte
-	return mapa[x][y-1];
-}
-
-if(clase == 'blue abajo'){
-	//al sur
-	return mapa[x][y+1];
-}
-
-if(clase == 'blue derecha'){
-	//al este
-	return mapa[x-1][y];
-}
-
-if(clase == 'blue izquierda'){
-	//al oeste
-	return mapa[x+1][y];
-}
-
-console.log('clase: '+clase)
-
-}
-
-function mover(){
-	var x = lado_izquierdo()
-console.log(x+'<--')
-
-	if(x=='*'){
-	  	adelante()
-	  }
-
-	  if(x== 16 && y == 9){
-	  	clearInterval(timer);
-	  }
-
-	  console.log('hola')
-}
-
-var timer;
-function solito(){
-
-//timer = setInterval(mover(), 100);
-
-mover()
-mover()
-mover()
-mover()
-
-}
-
-
-
-
- solito();
-
-
-
